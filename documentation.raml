@@ -1,0 +1,100 @@
+#%RAML 1.0
+title: Services Montréal
+version: v1
+baseUri: http://127.0.0.1:5000
+
+/plainte:
+  post:
+    description: "Route pour soumettre le formulaire de plainte"
+    body:
+      application/json:
+        type: object
+        properties:
+          nom_etablissement: string
+          adresse: string
+          ville: string
+          date_visite: string
+          nom_client: string
+          description_probleme: string
+        required: [nom_etablissement, adresse, ville, date_visite, nom_client, description_probleme]
+    responses:
+      200:
+        body:
+          text/html:
+            example: Plainte envoyée avec succès
+
+/supprimer_plaintes:
+  delete:
+    description: "Service REST suppression de plaintes"
+    body:
+      application/json:
+        example: {"ids": [1, 2, 3]}
+    responses:
+      200:
+        body:
+          application/json:
+            example: {"message": "Plaintes supprimées avec succès"}
+
+/contrevenants:
+  get:
+    description: "Service REST recherche par date"
+    queryParameters:
+      du:
+        description: Date de début
+        type: string
+        required: true
+      au:
+        description: Date de fin
+        type: string
+        required: true
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              [{"etablissement": "Nom1", "nombre_contraventions": 10},{"etablissement": "Nom2", "nombre_contraventions": 5}]
+
+/etablissements_infractions:
+  get:
+    description: "Route pour obtenir la liste des établissements ayant commis des infractions"
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              [{"nom_etablissement": "Etablissement1", "nombre_infractions": 10},{"nom_etablissement": "Etablissement2", "nombre_infractions": 5}]
+
+/etablissements_infractions_xml:
+  get:
+    description: "Route pour obtenir la liste des établissements ayant commis des infractions au format XML"
+    responses:
+      200:
+        body:
+          application/xml:
+            example: |
+              <?xml version="1.0" encoding="UTF-8"?>
+              <etablissements_infractions>
+                <etablissement>
+                  <nom_etablissement>Etablissement1</nom_etablissement>
+                  <nombre_infractions>10</nombre_infractions>
+                </etablissement>
+                <etablissement>
+                  <nom_etablissement>Etablissement2</nom_etablissement>
+                  <nombre_infractions>5</nombre_infractions>
+                </etablissement>
+              </etablissements_infractions>
+
+/etablissements_infractions_csv:
+  get:
+    description: "Même route pour obtenir au format CSV (télécharge un fichier CSV)"
+    responses:
+      200:
+        body:
+          text/csv:
+            example: |
+              nom_etablissement,nombre_infractions
+              Etablissement1,10
+              Etablissement2,5
+
+
+

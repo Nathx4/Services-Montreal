@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Services Montréal</title>
+        <link rel="stylesheet" type="text/css" href="static/css/style.css">
+    </head>
+<body>
+    <div class="header">
+        <h1>Services Montréal</h1>
+    </div>
+    <div class="navigation">
+        <a href="{{ url_for('home') }}">Acceuil</a>
+        <a href="{{ url_for('recherche_date') }}">Recherche par date</a>
+        <a href="{{ url_for('recherche_restaurants') }}">Recherche par restaurants</a>
+        <a href="{{ url_for('show_complaint_form') }}">Formulaire de plainte</a>
+    </div>
+    <div>
+    <div class="main-content">
+        <h2>Bienvenu sur Services Montréal</h2>
+        <p>Base de donnée : Établissements, plaintes, contravention.</p>
+    </div>
+   
+    {% block dash %}{% endblock %}
+
+    <div class="footer">
+        <p>© 2024 SERVICES MONTRÉAL - Tous droits réservés</p>
+    </div>
+    <script>
+        function hideFooter() {
+            const footer = document.querySelector('.footer');
+            footer.classList.toggle('hidden');
+        }
+        setTimeout(hideFooter, 3000);   
+    </script>
+</body>
+</html>

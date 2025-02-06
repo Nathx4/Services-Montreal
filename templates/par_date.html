@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block dash %}
+    <h1 id="search-title">Recherche de contraventions par date</h1>
+    <form id="searchDate" class="search-form">
+        <label for="startDate" class="search-label">Date de début :</label>
+        <input type="date" id="startDate" name="du" class="search-input">
+        
+        <label for="endDate" class="search-label">Date de fin :</label>
+        <input type="date" id="endDate" name="au" class="search-input">
+        
+        <button type="submit" class="search-button">Rechercher</button>
+    </form>
+
+    <div id="resultsDate"></div>
+
+    <script src="{{ url_for('static', filename='js/par_date.js') }}"></script>
+{% endblock %}
+
+   

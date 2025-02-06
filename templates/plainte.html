@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block dash %}
+    <h1>Faire une plainte</h1>
+    <form id="plainteForm">
+        <label for="nomEtablissement">Nom de l'établissement :</label>
+        <input type="text" id="nomEtablissement" name="nom_etablissement">
+        <br>
+        <label for="adresse">Adresse :</label>
+        <input type="text" id="adresse" name="adresse">
+        <br>
+        <label for="ville">Ville :</label>
+        <input type="text" id="ville" name="ville">
+        <br>
+        <label for="dateVisite">Date de visite :</label>
+        <input type="date" id="dateVisite" name="date_visite">
+        <br>
+        <label for="nomClient">Nom du client :</label>
+        <input type="text" id="nomClient" name="nom_client">
+        <br>
+        <label for="descriptionProbleme">Description du problème :</label>
+        <textarea id="descriptionProbleme" name="description_probleme"></textarea>
+        <br>
+        <button type="submit" class="search-button">Envoyer la plainte</button>
+    </form>
+
+    <a href="/afficher_plaintes" type="button" id="button" class="search">Afficher les plaintes</a>
+
+    <script src="{{ url_for('static', filename='js/plaintes_form.js') }}"></script>
+{% endblock %}
+
+    

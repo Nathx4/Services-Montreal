@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block dash %}
+    <h1>Recherche d'infractions par restaurant</h1>
+    <form id="searchForm" class="search-form">
+        <label for="restaurant" class="form-label">Sélectionnez un restaurant :</label>
+        <select id="restaurant" name="restaurant" class="form-select">
+            {% for restaurant in restaurants %}
+            <option value="{{ restaurant }}">{{ restaurant }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit" class="form-button">Rechercher</button>
+    </form>
+
+    <div id="resultsRestaurant"></div>
+
+    <script src="{{ url_for('static', filename='js/par_restaurants.js') }}"></script>
+{% endblock %}
+
+
+   

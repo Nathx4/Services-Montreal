@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block dash %}
+
+    <h1>Recherche de contraventions</h1>
+    <form action="/resultats" method="post">
+        <input type="text" name="recherche" placeholder="Recherche par nom d'établissement, propriétaire ou rue">
+        <input type="submit" value="Rechercher">
+    </form>
+    
+{% endblock %}
